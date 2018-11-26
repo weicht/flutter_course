@@ -5,12 +5,14 @@ class Products extends StatelessWidget {
   // replace it and build will be called again
   final List <String> products;
 
-  Products(this.products);
+  Products([this.products = const []]) {
+    print('[Products Widget] Constructor');
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(
+    return ListView(
       children: products.map((element) => Card(
         child: Column(
           children: <Widget>[

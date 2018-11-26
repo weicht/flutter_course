@@ -8,7 +8,7 @@ import './product_manager.dart';
 //  runApp(MyApp());
 //}
 void main() {
-  debugPaintSizeEnabled = true;
+//  debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: Text('Easy List'),
             ),
-            body: ProductManager('First Product')));
+            body: ProductManager(startingProduct: 'Food Tester')));
   }
 }
 
