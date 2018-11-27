@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import './product_manager.dart';
+import './pages/home.dart';
 
-//must be called "main" for flutter to build for you
-//void main() {
-//  runApp(MyApp());
-//}
 void main() {
 //  debugPaintSizeEnabled = true;
   runApp(MyApp());
@@ -24,12 +20,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.purple
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text('Easy List'),
-            ),
-            body: ProductManager()
-        ));
+        home: HomePage(),
+    );
   }
 }
 
