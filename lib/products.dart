@@ -5,7 +5,7 @@ import './pages/product.dart';
 class Products extends StatelessWidget {
   //final only means we won't "change" products but we can
   // replace it and build will be called again
-  final List<String> products;
+  final List<Map<String, String>> products;
 
   Products([this.products = const []]) {
     print('[Products Widget] Constructor');
@@ -16,7 +16,7 @@ class Products extends StatelessWidget {
         child: Column(
       children: <Widget>[
         Image.asset('assets/food.jpg'),
-        Text(products[index]),
+        Text(products[index]['title']),
         ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[FlatButton(
@@ -24,7 +24,8 @@ class Products extends StatelessWidget {
               onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => ProductPage('fakeTitle', 'assets/food.jpg')
+                      builder: (BuildContext context) => ProductPage(
+                          products[index]['title'], products[index]['image'])
                   )
               ),
             )
