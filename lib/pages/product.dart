@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-import '../product_manager.dart';
+//import '../product_manager.dart';
 
 class ProductPage extends StatelessWidget {
   final String title;
@@ -10,7 +11,16 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () {
+        //return false so we don't get errors when looking for value back in caller
+        Navigator.pop(context, false);
+        //need to return a Future value.  It will do a pop back in the caller
+        // if we returned true.  So, we return false instead so we dont try to
+        // pop() on the main page.
+        return Future.value(false);
+      },
+      child: Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
@@ -27,6 +37,6 @@ class ProductPage extends StatelessWidget {
                   onPressed: () => Navigator.pop(context, true),
                 ))
           ]),
-    );
+    ),);
   }
 }
