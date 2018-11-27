@@ -38,7 +38,12 @@ class _ProductManagerState extends State<ProductManager> {
     setState(() {
       _products.add(product);
     });
-    print(_products);
+  }
+
+  void _deleteProduct(int index) {
+    setState(() {
+      _products.removeAt(index);
+    });
   }
 
   @override
@@ -52,7 +57,7 @@ class _ProductManagerState extends State<ProductManager> {
 //      Container(
 //        height: 300.0,
       Expanded(
-        child: Products(_products)
+        child: Products(_products, deleteProduct: _deleteProduct)
       )
     ]);
   }
