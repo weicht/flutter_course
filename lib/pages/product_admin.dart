@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 import './products.dart';
+import './product_create.dart';
+import './product_list.dart';
 
 class ProductAdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        drawer: Drawer(
-          child: Column(
-              children: <Widget>[
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+            drawer: Drawer(
+              child: Column(children: <Widget>[
                 AppBar(
                   centerTitle: false,
                   automaticallyImplyLeading: false,
@@ -20,25 +23,22 @@ class ProductAdminPage extends StatelessWidget {
                   onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => ProductsPage()
-                      )
-                  ),
+                          builder: (BuildContext context) => ProductsPage())),
                 ),
               ]),
-        ),
-        appBar: AppBar(
-          title: Text('Product Admin'),
-        ),
-        body: Center(
-          child: RaisedButton(
-              child: Text('Save'),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => ProductsPage()),
-                );
-              }),
-        ));
+            ),
+            appBar: AppBar(
+              title: Text('Product Admin'),
+              bottom: TabBar(tabs: <Widget>[
+                Tab(icon: Icon(Icons.create), text: 'Create Product'),
+                Tab(icon: Icon(Icons.list), text: 'My Products')
+              ]),
+            ),
+            body: TabBarView(
+              children: <Widget>[
+                ProductCreatePage(),
+                ProductListPage()
+              ],
+            )));
   }
 }
