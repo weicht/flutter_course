@@ -22,7 +22,7 @@ class ProductAdminPage extends StatelessWidget {
                   title: Text('All Products'),
                   onTap: () => Navigator.pushReplacementNamed(
                         context,
-                        '/',
+                        '/products',
                       ),
                 ),
               ]),

@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.purple
         ),
-//        home: AuthPage(),
+        home: AuthPage(),
       routes: {
-        '/': (BuildContext context) => ProductsPage(),
+        '/products': (BuildContext context) => ProductsPage(),
         '/admin': (BuildContext context) => ProductAdminPage(),
       },
     );
