@@ -35,6 +35,11 @@ class ProductAdminPage extends StatelessWidget {
               ]),
             ),
             body: TabBarView(
+              //number of children widget MUST equal the length of the DefaultTabController
+              // and number of Tab items
+              // - note that the children widget/pages are rendered inline/embedded
+              //   - not a replacement so they have to be consructed diff from a full page
+              //     - directly return the body of a page, not a new Scaffold
               children: <Widget>[ProductCreatePage(), ProductListPage()],
             )));
   }

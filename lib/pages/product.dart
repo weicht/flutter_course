@@ -21,22 +21,46 @@ class ProductPage extends StatelessWidget {
         return Future.value(false);
       },
       child: Scaffold(
-      appBar: AppBar(
-        title: Text(title),
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(imageUrl),
+              Container(
+                  padding: EdgeInsets.all(10.0), child: Text('on prod page')),
+              Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: RaisedButton(
+                      child: Text('DELETE'),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                  title: Text('Are you sure?'),
+                                  content: Text('Can not be undone'),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                        child: Text('Discard'),
+                                        onPressed: () {
+                                          // pop off the alert
+                                          Navigator.pop(context);
+                                        }),
+                                    FlatButton(
+                                        child: Text('Continue'),
+                                        onPressed: () {
+                                          // pop off the alert
+                                          Navigator.pop(context);
+                                          // pop off the product page
+                                          Navigator.pop(context, true);
+                                        }),
+                                  ]);
+                            });
+                      }))
+            ]),
       ),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(imageUrl),
-            Container(
-                padding: EdgeInsets.all(10.0), child: Text('on prod page')),
-            Container(
-                padding: EdgeInsets.all(10.0),
-                child: RaisedButton(
-                  child: Text('DELETE'),
-                  onPressed: () => Navigator.pop(context, true),
-                ))
-          ]),
-    ),);
+    );
   }
 }
